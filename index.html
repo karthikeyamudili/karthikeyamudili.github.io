@@ -26,19 +26,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  /* ===== MOBILE OVERFLOW GUARD ===== */
-html { max-width: 100%; }
+/* ===== MOBILE OVERFLOW + ZOOM GUARD (consolidated) ===== */
+html {
+  max-width: 100%;
+  touch-action: manipulation;        /* kills double-tap zoom on EVERY surface, keeps pinch + scroll */
+  -webkit-text-size-adjust: 100%;    /* stops Android font-boosting reflow */
+  text-size-adjust: 100%;
+}
 body {
   max-width: 100%;
-  overflow-x: hidden;  /* universal fallback — every browser incl. Jio/KaiOS */
-  overflow-x: clip;    /* modern browsers: same fix, keeps sticky nav working */
+  overflow-x: hidden;                /* universal fallback — every browser incl. Jio/KaiOS */
+  overflow-x: clip;                  /* modern browsers: same fix, keeps sticky nav working */
+  touch-action: manipulation;
 }
 img, svg, canvas, video { max-width: 100%; }
-  /* ===== MOBILE OVERFLOW + ZOOM GUARD ===== */
-html { max-width: 100%; }
-body { max-width: 100%; overflow-x: hidden; overflow-x: clip; }
-img, svg, canvas, video { max-width: 100%; }
 a, button, input, textarea { touch-action: manipulation; }
+.field input, .field textarea, #chatInput { font-size: 16px; }   /* stops iOS focus-zoom at ANY screen width */
 /* ══════════════════ TOKENS ══════════════════ */
 :root{
   --bg0:#07020a; --bg1:#120409; --bg2:#1c060e;
