@@ -34,6 +34,11 @@ body {
   overflow-x: clip;    /* modern browsers: same fix, keeps sticky nav working */
 }
 img, svg, canvas, video { max-width: 100%; }
+  /* ===== MOBILE OVERFLOW + ZOOM GUARD ===== */
+html { max-width: 100%; }
+body { max-width: 100%; overflow-x: hidden; overflow-x: clip; }
+img, svg, canvas, video { max-width: 100%; }
+a, button, input, textarea { touch-action: manipulation; }
 /* ══════════════════ TOKENS ══════════════════ */
 :root{
   --bg0:#07020a; --bg1:#120409; --bg2:#1c060e;
@@ -452,6 +457,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);background:r
   section{padding:76px 0}
 }
 @media (max-width:640px){
+.field input, .field textarea, #chatInput { font-size: 16px; }
   /* — tight, crisp mobile rhythm — */
   section{padding:48px 0}
   #hero{padding:calc(var(--nav-h) + 18px) 0 40px;display:block;min-height:0}
