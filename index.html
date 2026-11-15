@@ -40,7 +40,7 @@ body {
   touch-action: manipulation;
 }
 img, svg, canvas, video { max-width: 100%; }
-a, button, input, textarea { touch-action: manipulation; }
+a, button, input, textarea { touch-action: manipulation; } html { touch-action: manipulation; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; } body { touch-action: manipulation; }
 .field input, .field textarea, #chatInput { font-size: 16px; }   /* stops iOS focus-zoom at ANY screen width */
 /* ══════════════════ TOKENS ══════════════════ */
 :root{
@@ -268,7 +268,7 @@ h1.name{font-family:var(--disp);font-weight:900;font-size:clamp(2.3rem,4.8vw,3.9
 .proj{overflow:hidden;display:flex;flex-direction:column}
 .proj:hover{transform:translateY(-5px);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 44px rgba(224,22,62,.14);border-color:var(--line2)}
 .proj.featured{grid-column:1/-1;display:grid;grid-template-columns:minmax(280px,420px) minmax(0,1fr)}
-.proj-cover{position:relative;overflow:hidden;border-bottom:1px solid var(--line);perspective:700px}
+.proj-cover{position:relative;overflow:hidden;border-bottom:1px solid var(--line);perspective:700px;background:linear-gradient(160deg,#200812,#0d0309)}
 .proj.featured .proj-cover{border-bottom:none;border-right:1px solid var(--line)}
 .proj-cover svg{width:100%;height:100%;transition:transform .35s ease;transform-style:preserve-3d}
 .proj-cover .pc-glow{position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(255,46,77,.14),transparent 60%);pointer-events:none}
@@ -335,7 +335,7 @@ h1.name{font-family:var(--disp);font-weight:900;font-size:clamp(2.3rem,4.8vw,3.9
 .form-card h3{font-family:var(--disp);font-size:1.05rem;font-weight:700;margin-bottom:18px}
 .field{margin-bottom:16px}
 .field label{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
-.field input,.field textarea{width:100%;background:#16050c;border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink);font-family:var(--body);font-size:.94rem;transition:border-color .2s,box-shadow .2s;resize:vertical}
+.field input,.field textarea{width:100%;background:#16050c;border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink);font-family:var(--body);font-size:16px;transition:border-color .2s,box-shadow .2s;resize:vertical}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--crimson);box-shadow:0 0 0 3px rgba(224,22,62,.18)}
 .field.invalid input,.field.invalid textarea{border-color:var(--danger);box-shadow:0 0 0 3px rgba(255,77,94,.15)}
 .f-err{display:none;font-size:.76rem;color:var(--danger);margin-top:5px}
@@ -419,7 +419,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);background:r
 #chatSuggest:hover{background:rgba(255,179,71,.16)}
 #chatSuggest:active{transform:scale(.92)}
 #chatSuggest svg{width:16px;height:16px}
-#chatInput{flex:1;min-width:0;background:#16050c;border:1px solid var(--line);border-radius:12px;padding:10px 13px;color:var(--ink);font-family:var(--body);font-size:.88rem;line-height:1.45;resize:none;max-height:110px;transition:border-color .2s,box-shadow .2s}
+#chatInput{flex:1;min-width:0;background:#16050c;border:1px solid var(--line);border-radius:12px;padding:10px 13px;color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;resize:none;max-height:110px;transition:border-color .2s,box-shadow .2s}
 #chatInput:focus{outline:none;border-color:var(--crimson);box-shadow:0 0 0 3px rgba(224,22,62,.16)}
 #chatInput::placeholder{color:var(--faint)}
 #chatSend{width:40px;height:40px;flex:none;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--wine));display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 6px 18px rgba(224,22,62,.4),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .15s,opacity .2s,box-shadow .2s}
@@ -1095,7 +1095,7 @@ function projectArt(p, u){
   else if(p.id==="recruiter") motif = `<rect x="60" y="70" width="250" height="64" rx="18" fill="#1c060e" stroke="${a}" stroke-opacity=".4"/><rect x="80" y="90" width="150" height="8" rx="4" fill="${b}" opacity=".8"/><rect x="80" y="106" width="100" height="8" rx="4" fill="#fff" opacity=".25"/><rect x="120" y="156" width="250" height="64" rx="18" fill="url(#${u}ac)" opacity=".9"/><rect x="140" y="176" width="170" height="8" rx="4" fill="#fff" opacity=".85"/><rect x="140" y="192" width="110" height="8" rx="4" fill="#fff" opacity=".5"/><g transform="translate(400,80)"><rect x="0" y="16" width="110" height="96" rx="42" fill="url(#${u}wh)"/><rect x="10" y="30" width="90" height="68" rx="30" fill="${a}"/><rect x="14" y="34" width="82" height="60" rx="26" fill="#17060d"/><path d="M28 62q8-10 17 0M62 62q8-10 17 0" stroke="#ffe4e8" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M46 78q9 7 18 0" stroke="#fda4af" stroke-width="3.6" fill="none" stroke-linecap="round"/><circle cx="-6" cy="62" r="11" fill="${a}"/><circle cx="116" cy="62" r="11" fill="${a}"/></g><path d="M520 240l4 11 11 4-11 4-4 11-4-11-11-4 11-4 4-11z" fill="${b}" opacity=".9"/><path d="M70 250l3 8 8 3-8 3-3 8-3-8-8-3 8-3 3-8z" fill="${a}" opacity=".7"/>`;
   else if(p.id==="jpmorgan") motif = `<g>${[[80,120,60],[150,90,110],[220,140,70],[290,70,150],[360,110,100],[430,60,170]].map(([x,y,h],i)=>`<line x1="${x+17}" y1="${y-18}" x2="${x+17}" y2="${y+h+16}" stroke="${a}" stroke-opacity=".5" stroke-width="2"/><rect x="${x}" y="${y}" width="34" height="${h}" rx="6" fill="url(#${u}ac)" opacity="${.5+i*.08}"/>`).join("")}</g><polyline points="70,120 160,150 250,135 340,175 430,160 540,205" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="7 6" opacity=".8"/><circle cx="540" cy="205" r="7" fill="${b}"/><rect x="380" y="42" width="160" height="30" rx="15" fill="#1c060e" stroke="${a}" stroke-opacity=".55"/><text x="398" y="62" font-family="JetBrains Mono,monospace" font-size="14" fill="#3ddc97">FAIR EV ✓ DCF</text><circle cx="120" cy="60" r="24" fill="none" stroke="${b}" stroke-opacity=".6" stroke-width="2"/><circle cx="120" cy="60" r="14" fill="none" stroke="${b}" stroke-opacity=".8" stroke-width="2"/><circle cx="120" cy="60" r="5" fill="${b}"/>`;
   else motif = `<rect x="70" y="52" width="460" height="234" rx="16" fill="#0d0309" stroke="${a}" stroke-opacity=".45"/><rect x="70" y="52" width="460" height="36" rx="16" fill="#1c060e"/><circle cx="94" cy="70" r="5.5" fill="#ff4d5e"/><circle cx="114" cy="70" r="5.5" fill="#ffc24d"/><circle cx="134" cy="70" r="5.5" fill="#3ddc97"/><g font-family="JetBrains Mono,monospace" font-size="16"><text x="94" y="124" fill="${a}">&gt;&gt;&gt;</text><text x="134" y="124" fill="#fdf3f5">import cs50  # learning</text><text x="94" y="158" fill="${a}">&gt;&gt;&gt;</text><text x="134" y="158" fill="#cfa6b1">practice(math, finance)</text><text x="94" y="192" fill="#3ddc97">✓</text><text x="114" y="192" fill="#cfa6b1">tests passed · eig(A) ready</text><text x="94" y="230" fill="${a}">&gt;&gt;</text><text x="124" y="230" fill="#cfa6b1">% MATLAB Onramp</text><rect x="290" y="217" width="12" height="17" fill="${b}"/></g>`;
-  return `<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${head}${motif}</svg>`;
+  return `<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${head}${motif}</svg>`;
 }
 $("#projectGrid").innerHTML = KB.projects.map((p,i)=>{
   const links = p.zenodoUrl
