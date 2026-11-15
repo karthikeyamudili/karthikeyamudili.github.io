@@ -26,6 +26,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
+  /* ===== MOBILE OVERFLOW GUARD ===== */
+html { max-width: 100%; }
+body {
+  max-width: 100%;
+  overflow-x: hidden;  /* universal fallback — every browser incl. Jio/KaiOS */
+  overflow-x: clip;    /* modern browsers: same fix, keeps sticky nav working */
+}
+img, svg, canvas, video { max-width: 100%; }
 /* ══════════════════ TOKENS ══════════════════ */
 :root{
   --bg0:#07020a; --bg1:#120409; --bg2:#1c060e;
@@ -351,7 +359,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);background:r
 #launcher:hover .l-tip{opacity:1}
 
 /* ══════════════════ CHAT PANEL ══════════════════ */
-#chatPanel{position:fixed;right:24px;bottom:24px;z-index:140;width:408px;max-width:calc(100vw - 32px);height:min(660px,calc(100dvh - 48px));display:flex;flex-direction:column;background:linear-gradient(170deg,#1e0710,#0b0308 70%);border:1px solid rgba(255,46,77,.32);border-radius:20px;overflow:hidden;box-shadow:0 34px 90px rgba(0,0,0,.7),0 0 70px rgba(224,22,62,.2);opacity:0;pointer-events:none;transform:translateY(18px) scale(.96);transform-origin:bottom right;transition:opacity .3s cubic-bezier(.22,1,.36,1),transform .3s cubic-bezier(.22,1,.36,1)}
+#chatPanel{position:fixed;right:24px;bottom:24px;z-index:140;width:408px;max-width:calc(100% - 32px);height:min(660px,calc(100dvh - 48px));display:flex;flex-direction:column;background:linear-gradient(170deg,#1e0710,#0b0308 70%);border:1px solid rgba(255,46,77,.32);border-radius:20px;overflow:hidden;box-shadow:0 34px 90px rgba(0,0,0,.7),0 0 70px rgba(224,22,62,.2);opacity:0;pointer-events:none;transform:translateY(18px) scale(.96);transform-origin:bottom right;transition:opacity .3s cubic-bezier(.22,1,.36,1),transform .3s cubic-bezier(.22,1,.36,1)}
 #chatPanel.open{opacity:1;pointer-events:auto;transform:none}
 .chat-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(120deg,rgba(122,22,51,.55),rgba(58,13,28,.55));border-bottom:1px solid var(--line2);position:relative;flex:none}
 .chat-ava{width:42px;height:42px;flex:none;border-radius:13px;background:linear-gradient(140deg,#2a0a16,#16050c);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px rgba(224,22,62,.3)}
@@ -417,7 +425,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);background:r
 
 /* ══════════════════ TOASTS ══════════════════ */
 #toasts{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:200;display:flex;flex-direction:column;gap:10px;align-items:center;pointer-events:none}
-.toast{display:flex;align-items:center;gap:10px;background:#200812;border:1px solid rgba(255,46,77,.45);border-radius:13px;padding:11px 18px;font-size:.84rem;font-weight:600;box-shadow:0 16px 44px rgba(0,0,0,.6),0 0 26px rgba(224,22,62,.25);animation:toastin .35s cubic-bezier(.22,1,.36,1);white-space:nowrap;max-width:calc(100vw - 40px)}
+.toast{display:flex;align-items:center;gap:10px;background:#200812;border:1px solid rgba(255,46,77,.45);border-radius:13px;padding:11px 18px;font-size:.84rem;font-weight:600;box-shadow:0 16px 44px rgba(0,0,0,.6),0 0 26px rgba(224,22,62,.25);animation:toastin .35s cubic-bezier(.22,1,.36,1);white-space:nowrap;max-width:calc(100% - 40px)}
 .toast svg{width:15px;height:15px;color:var(--ok);flex:none}
 .toast.out{animation:toastout .3s forwards}
 @keyframes toastin{from{opacity:0;transform:translateY(16px) scale(.94)}}
