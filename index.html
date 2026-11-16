@@ -320,21 +320,25 @@ h1.name{font-family:var(--disp);font-weight:900;font-size:clamp(2.3rem,4.8vw,3.9
 
 /* ══════════════════ CONTACT ══════════════════ */
 #contact{background:radial-gradient(ellipse 60% 55% at 50% 100%,rgba(122,22,51,.35),transparent)}
-.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start}
-.channels{display:flex;flex-direction:column;gap:12px;margin:24px 0}
-.channel{display:flex;align-items:center;gap:14px;padding:15px 18px;transition:transform .2s,border-color .2s,box-shadow .2s;min-width:0}
+.contact-status{margin-bottom:24px}
+/* One shared grid: 6 channel rows + 1 CTA row on the left, form spans all 7 on the
+   right → form top edge == Email row top edge, Open-draft bottom == ORCID bottom. */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 44px;align-items:stretch}
+.channel{grid-column:1;display:flex;align-items:center;gap:14px;padding:15px 18px;transition:transform .2s,border-color .2s,box-shadow .2s;min-width:0}
 .channel:hover{transform:translateX(5px);border-color:var(--line2);box-shadow:0 0 26px rgba(224,22,62,.12)}
 .ch-ico{width:42px;height:42px;flex:none;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(224,22,62,.2),rgba(122,22,51,.2));border:1px solid var(--line2);color:var(--rose)}
 .ch-ico svg{width:18px;height:18px}
 .channel .ch-lab{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
 .channel .ch-val{font-weight:600;font-size:.9rem;color:var(--ink);word-break:break-all;overflow-wrap:anywhere}
 .channel .ch-act{margin-left:auto;flex:none;display:flex;gap:6px}
+.contact-cta{grid-column:1;min-height:46px;display:flex;align-items:center}
 .icon-btn{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);background:rgba(255,46,77,.06);color:var(--muted);transition:background .2s,color .2s,transform .15s}
 .icon-btn:hover{background:rgba(255,46,77,.18);color:var(--ink)}
 .icon-btn:active{transform:scale(.9)}
 .icon-btn svg{width:15px;height:15px}
-.form-card{padding:28px}
+.form-card{grid-column:2;grid-row:1/8;display:flex;flex-direction:column;padding:28px 28px 12px}
 .form-card h3{font-family:var(--disp);font-size:1.05rem;font-weight:700;margin-bottom:18px}
+#cForm{display:flex;flex-direction:column;flex:1}
 .field{margin-bottom:16px}
 .field label{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
 .field input,.field textarea{width:100%;background:#16050c;border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink);font-family:var(--body);font-size:16px;transition:border-color .2s,box-shadow .2s;resize:vertical}
@@ -342,13 +346,29 @@ h1.name{font-family:var(--disp);font-weight:900;font-size:clamp(2.3rem,4.8vw,3.9
 .field.invalid input,.field.invalid textarea{border-color:var(--danger);box-shadow:0 0 0 3px rgba(255,77,94,.15)}
 .f-err{display:none;font-size:.76rem;color:var(--danger);margin-top:5px}
 .field.invalid .f-err{display:block}
+#cSend{margin-top:auto;width:100%}
+.form-note{min-height:46px;display:flex;align-items:center;margin:0;font-size:.76rem;color:var(--faint)}
 #cSuccess{display:none;text-align:center;padding:26px 8px}
 #cSuccess.show{display:block}
 #cSuccess .ok-ring{width:66px;height:66px;margin:0 auto 18px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(61,220,151,.1);border:2px solid var(--ok);color:var(--ok);box-shadow:0 0 30px rgba(61,220,151,.35)}
 #cSuccess .ok-ring svg{width:28px;height:28px}
 #cSuccess h4{font-family:var(--disp);font-size:1.05rem;margin-bottom:8px}
 #cSuccess p{color:var(--muted);font-size:.9rem;margin-bottom:20px}
-
+/* Informative band that fills the space under the two columns */
+.next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.next-card{padding:20px;display:flex;flex-direction:column;gap:10px}
+.next-card .n-ico{width:40px;height:40px;flex:none;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(255,179,71,.14),rgba(224,22,62,.16));border:1px solid rgba(255,179,71,.3);color:var(--gold)}
+.next-card .n-ico svg{width:18px;height:18px}
+.next-card h4{font-family:var(--disp);font-size:.92rem;font-weight:700;line-height:1.35}
+.next-card p{font-size:.85rem;color:var(--muted)}
+.next-card .n-meta{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
+.promise{margin-top:14px;padding:14px 18px;border:1px dashed var(--line2);border-radius:14px;display:flex;flex-wrap:wrap;gap:8px 26px;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:var(--muted);background:rgba(255,46,77,.04)}
+.promise b{color:var(--rose);font-weight:600}
+@media (max-width:860px){
+  .contact-grid{grid-template-columns:1fr}
+  .contact-grid>.channel,.contact-cta,.form-card{grid-column:1;grid-row:auto}
+  .next-grid{grid-template-columns:1fr}
+}
 /* ══════════════════ FOOTER ══════════════════ */
 footer{position:relative;z-index:1;border-top:1px solid var(--line);background:rgba(10,2,8,.8);padding:44px 0 34px}
 .foot-grid{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
@@ -718,28 +738,65 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);background:r
     <div class="eyebrow reveal">06 · Contact</div>
     <h2 class="title reveal" style="--d:.05s">Say hello — <span class="grad">I'd love to connect</span></h2>
     <p class="lede reveal" style="--d:.1s">Internships, study collaborations, mentorship, or just a conversation about math, AI and finance — every channel below is verified.</p>
-    <div class="contact-grid">
-      <div class="reveal">
-        <div class="avail"><i></i>Open to internships, learning opportunities &amp; mentorship</div>
-        <div class="channels" id="channelList"></div>
-        <button class="btn btn-p" data-open-chat data-ask="How can I contact the developer?"><span data-ico="sparkles"></span>Prefer instant answers? Ask the AI Recruiter</button>
+    <div class="avail contact-status reveal"><i aria-hidden="true"></i>Open to internships, learning opportunities &amp; mentorship</div>
+    <div class="contact-grid" id="contactGrid">
+      <div class="contact-cta reveal">
+        <button class="btn btn-g btn-sm" data-open-chat data-ask=""><span data-ico="sparkles" aria-hidden="true"></span>Prefer instant answers? Ask the AI Recruiter</button>
       </div>
-      <div class="form-card card reveal" style="--d:.08s">
+      <div class="form-card card reveal" style="--d:.1s">
+        <h3>Send a message</h3>
         <form id="cForm" novalidate>
-          <h3>Send a message</h3>
-          <div class="field" id="fName"><label for="cName">Your name</label><input id="cName" type="text" autocomplete="name" placeholder="Ada Lovelace"><div class="f-err">Please enter your name (2+ characters).</div></div>
-          <div class="field" id="fEmail"><label for="cEmail">Email</label><input id="cEmail" type="email" autocomplete="email" placeholder="ada@company.com"><div class="f-err">That email doesn't look right.</div></div>
-          <div class="field" id="fMsg"><label for="cMsg">Message</label><textarea id="cMsg" rows="4" placeholder="Tell me about the opportunity, idea or question…"></textarea><div class="f-err">A few more words, please (10+ characters).</div></div>
-          <button class="btn btn-p" id="cSend" type="submit" style="width:100%;justify-content:center"><span data-ico="send"></span>Open draft in your email app</button>
-          <p style="font-size:.72rem;color:var(--faint);margin-top:12px;text-align:center">No backend here — this composes a pre-filled email to karthikeyamudili@gmail.com.</p>
+          <div class="field" id="fName">
+            <label for="cName">Your name</label>
+            <input id="cName" name="name" type="text" autocomplete="name" placeholder="e.g. Priya Sharma">
+            <div class="f-err">Please enter your name (2+ characters).</div>
+          </div>
+          <div class="field" id="fEmail">
+            <label for="cEmail">Email</label>
+            <input id="cEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+            <div class="f-err">That email doesn't look right.</div>
+          </div>
+          <div class="field" id="fMsg">
+            <label for="cMsg">Message</label>
+            <textarea id="cMsg" name="message" rows="4" placeholder="Internship, collaboration, mentorship, or just hello…"></textarea>
+            <div class="f-err">A few more words, please (10+ characters).</div>
+          </div>
+          <button class="btn btn-p" id="cSend" type="submit"><span data-ico="send" aria-hidden="true"></span>Open draft in your email app</button>
+          <p class="form-note">No backend here — this composes a pre-filled email to karthikeyamudili@gmail.com.</p>
         </form>
-        <div id="cSuccess">
-          <div class="ok-ring"><span data-ico="check"></span></div>
+        <div id="cSuccess" role="status">
+          <div class="ok-ring" data-ico="check" aria-hidden="true"></div>
           <h4>Your draft is ready!</h4>
-          <p>We've opened your email app with the message pre-filled. If nothing opened, write directly to <b style="color:var(--rose)">karthikeyamudili@gmail.com</b> — Karthikeya usually replies within 24–48h.</p>
-          <button class="btn btn-g btn-sm" id="cAgain"><span data-ico="refresh"></span>Write another</button>
+          <p>We've opened your email app with the message pre-filled. If nothing opened, write directly to <strong>karthikeyamudili@gmail.com</strong> — Karthikeya usually replies within 24–48h.</p>
+          <button class="btn btn-g btn-sm" id="cAgain"><span data-ico="refresh" aria-hidden="true"></span>Write another</button>
         </div>
       </div>
+    </div>
+    <div class="next-grid">
+      <div class="next-card card reveal">
+        <div class="n-ico" data-ico="mail" aria-hidden="true"></div>
+        <h4>Reply window</h4>
+        <p>Email is the fastest route — I usually reply within 24–48 hours, often the same day. LinkedIn and GitHub messages work too, just a little slower.</p>
+        <div class="n-meta">IST · UTC+5:30 · Visakhapatnam</div>
+      </div>
+      <div class="next-card card reveal" style="--d:.08s">
+        <div class="n-ico" data-ico="layers" aria-hidden="true"></div>
+        <h4>What I'm open to</h4>
+        <p>Internships, study collaborations and mentorship in AI workflows, interactive web design, mathematics and programming. I'm a 1st-year student — I bring curiosity and consistency, not senior expertise.</p>
+        <div class="n-meta">Student-first · honest scope</div>
+      </div>
+      <div class="next-card card reveal" style="--d:.16s">
+        <div class="n-ico" data-ico="code" aria-hidden="true"></div>
+        <h4>How I work</h4>
+        <p>Verified facts only: every claim on this page links to a real artifact — SSRN, Zenodo, ORCID, GitHub or a certificate. I learn in public and ship step by step.</p>
+        <div class="n-meta">Sources linked · no fabrication</div>
+      </div>
+    </div>
+    <div class="promise reveal">
+      <span><b>Promise:</b> no backend, no tracking — the form opens a draft in your own email app</span>
+      <span><b>Fastest:</b> karthikeyamudili@gmail.com</span>
+      <span><b>Research:</b> SSRN paper + Zenodo DOI</span>
+      <span><b>Built:</b> single-file HTML · local AI assistant</span>
     </div>
   </div>
 </section>
@@ -1138,12 +1195,12 @@ const CHANNELS = [
   {ico:"zenodo", lab:"Zenodo Research Record", val:"zenodo.org/records/18526916", href:KB.contact.zenodo},
   {ico:"orcid", lab:"ORCID iD", val:"orcid.org/0009-0008-2440-8170", href:KB.contact.orcid}
 ];
-$("#channelList").innerHTML = CHANNELS.map(c=>`
+$("#contactGrid").insertAdjacentHTML("afterbegin", CHANNELS.map(c=>`
   <div class="channel card">
     <div class="ch-ico">${icon(c.ico)}</div>
-    <div style="min-width:0"><div class="ch-lab">${c.lab}</div><a class="ch-val" href="${c.href}" ${c.href.startsWith('mailto')?'':'target="_blank" rel="noopener"'}>${c.val}</a></div>
+    <div style="min-width:0"><div class="ch-lab">${c.lab}</div><div class="ch-val">${c.val}</div></div>
     <div class="ch-act">${c.copy?`<button class="icon-btn" id="copyEmailBtn" aria-label="Copy email address">${icon("copy")}</button>`:''}${!c.href.startsWith('mailto')?`<a class="icon-btn" href="${c.href}" target="_blank" rel="noopener" aria-label="Open ${c.lab}">${icon("external")}</a>`:''}</div>
-  </div>`).join("");
+  </div>`).join(""));
 $("#year").textContent = new Date().getFullYear();
 
 /* ═══════════════════════ NAV / SCROLL / REVEALS ═══════════════════════ */
