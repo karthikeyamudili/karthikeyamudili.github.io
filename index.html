@@ -373,11 +373,20 @@ h1.name{font-family:var(--disp);font-weight:900;font-size:clamp(2.3rem,4.8vw,3.9
 footer{position:relative;z-index:1;border-top:1px solid var(--line);background:rgba(10,2,8,.8);padding:44px 0 34px}
 .foot-grid{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
 .foot-tag{color:var(--faint);font-size:.85rem}
+/* Promise lines sit under the logo+tagline, left of the social icons */
+.foot-mid{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:20px}
+.foot-promise{flex:1;min-width:260px;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--muted);line-height:1.5}
+.foot-promise b{color:var(--rose);font-weight:600;white-space:nowrap}
+.foot-promise span{min-width:0;overflow-wrap:anywhere}
 .foot-links{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .foot-note{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-family:var(--mono);font-size:.66rem;color:var(--faint);letter-spacing:.06em}
 .foot-note .fn-dot{color:var(--ok)}
 #toTop{margin-left:auto}
-
+@media (max-width:640px){
+  .foot-mid{flex-direction:column;align-items:flex-start;gap:16px}
+  .foot-links{margin-left:0}
+  .foot-promise{min-width:0;width:100%}
+}
 /* ══════════════════ CHAT LAUNCHER ══════════════════ */
 #launcher{position:fixed;right:24px;bottom:24px;z-index:130;width:64px;height:64px;border-radius:50%;background:linear-gradient(140deg,var(--red),var(--wine) 70%);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 34px rgba(0,0,0,.55),0 0 34px rgba(224,22,62,.5),inset 0 2px 0 rgba(255,255,255,.3);transition:transform .25s,opacity .25s}
 #launcher::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,46,77,.5);animation:launchring 2.4s ease-out infinite}
@@ -792,12 +801,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);background:r
         <div class="n-meta">Sources linked · no fabrication</div>
       </div>
     </div>
-    <div class="promise reveal">
-      <span><b>Promise:</b> no backend, no tracking — the form opens a draft in your own email app</span>
-      <span><b>Fastest:</b> karthikeyamudili@gmail.com</span>
-      <span><b>Research:</b> SSRN paper + Zenodo DOI</span>
-      <span><b>Built:</b> single-file HTML · local AI assistant</span>
-    </div>
+   
   </div>
 </section>
 </main>
@@ -806,22 +810,30 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);background:r
 <footer>
   <div class="wrap">
     <div class="foot-grid">
-      <a class="logo" href="#hero"><span class="dot"></span>VDNSS<b> KARTHIKEYA</b><b>·MUDILI</b></a>
+      <a class="logo" href="#hero"><span class="dot" aria-hidden="true"></span><span>VDNSS <b>KARTHIKEYA</b> ·MUDILI</span></a>
       <span class="foot-tag">Mathematics, finance &amp; code — applied through AI command engineering and interactive web design.</span>
+    </div>
+    <div class="foot-mid">
+      <div class="foot-promise">
+        <b>Promise:</b><span>no backend, no tracking — the form opens a draft in your own email app</span>
+        <b>Fastest:</b><span>karthikeyamudili@gmail.com</span>
+        <b>Research:</b><span>SSRN paper + Zenodo DOI</span>
+        <b>Built:</b><span>single-file HTML · local AI assistant</span>
+      </div>
       <div class="foot-links">
-        <a class="icon-btn" href="https://www.linkedin.com/in/karthikeya-mudili" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><span data-ico="linkedin"></span></a>
-        <a class="icon-btn" href="https://github.com/karthikeyamudili" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><span data-ico="github"></span></a>
-        <a class="icon-btn" href="https://orcid.org/0009-0008-2440-8170" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID iD"><span data-ico="orcid"></span></a>
-        <a class="icon-btn" href="https://ssrn.com/author=10281216" target="_blank" rel="noopener" aria-label="SSRN" title="SSRN Author Page"><span data-ico="ssrn"></span></a>
-        <a class="icon-btn" href="https://zenodo.org/records/18526916" target="_blank" rel="noopener" aria-label="Zenodo" title="Zenodo Record"><span data-ico="zenodo"></span></a>
-        <a class="icon-btn" href="mailto:karthikeyamudili@gmail.com" target="_blank" rel="noopener" aria-label="Email" title="Email"><span data-ico="mail"></span></a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/karthikeya-mudili" target="_blank" rel="noopener" aria-label="LinkedIn" data-ico="linkedin"></a>
+        <a class="icon-btn" href="https://github.com/karthikeyamudili" target="_blank" rel="noopener" aria-label="GitHub" data-ico="github"></a>
+        <a class="icon-btn" href="https://orcid.org/0009-0008-2440-8170" target="_blank" rel="noopener" aria-label="ORCID iD" data-ico="orcid"></a>
+        <a class="icon-btn" href="https://ssrn.com/author=10281216" target="_blank" rel="noopener" aria-label="SSRN Author Page" data-ico="ssrn"></a>
+        <a class="icon-btn" href="https://zenodo.org/records/18526916" target="_blank" rel="noopener" aria-label="Zenodo Research Record" data-ico="zenodo"></a>
+        <a class="icon-btn" href="mailto:karthikeyamudili@gmail.com" aria-label="Email" data-ico="mail"></a>
       </div>
     </div>
     <div class="foot-note">
       <span>© <span id="year">2026</span> Venkata Durga Naga Satya Sai Karthikeya Mudili</span>
-      <span class="fn-dot">●</span>
-      <span>Built with care by Karthikeya❤️ · the AI assistant runs locally in your browser.</span>
-      <button class="icon-btn" id="toTop" aria-label="Back to top"><span data-ico="up"></span></button>
+      <span class="fn-dot" aria-hidden="true">●</span>
+      <span>Built with care by Karthikeya ❤️ · the AI assistant runs locally in your browser.</span>
+      <button class="icon-btn" id="toTop" aria-label="Back to top" data-ico="up"></button>
     </div>
   </div>
 </footer>
